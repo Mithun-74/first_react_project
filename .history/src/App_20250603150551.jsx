@@ -12,6 +12,7 @@ const App = () => {
     <div>
       <Navbar/>
         {x}
+        {array.map((user)=>{return <h2>{user}</h2>})}
         <button onClick={()=>{btnclick()}}>Click me</button>
     </div>
   )

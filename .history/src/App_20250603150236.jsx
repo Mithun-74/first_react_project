@@ -3,15 +3,13 @@ import { Navbar } from './components/navbar'
 
 const App = () => {
   let x = 0;
-  const btnclick=()=>{
-    console.log("clicked");
-    x++;
-  }
-
+  let array = ["ueser1","ueser2","ueser3","ueser4","ueser5"]
+  const btnclick=()=>
   return (
     <div>
       <Navbar/>
         {x}
+        {array.map((user)=>{return <h2>{user}</h2>})}
         <button onClick={()=>{btnclick()}}>Click me</button>
     </div>
   )

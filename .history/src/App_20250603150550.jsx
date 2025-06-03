@@ -2,7 +2,7 @@ import React from 'react'
 import { Navbar } from './components/navbar'
 
 const App = () => {
-  let x = 0;
+  let x = 0
   const btnclick=()=>{
     console.log("clicked");
     x++;
@@ -12,6 +12,7 @@ const App = () => {
     <div>
       <Navbar/>
         {x}
+        {array.map((user)=>{return <h2>{user}</h2>})}
         <button onClick={()=>{btnclick()}}>Click me</button>
     </div>
   )
