@@ -1,0 +1,16 @@
+import React from 'react'
+import { Navbar } from './components/navbar'
+
+const App = () => {
+  let x = "hello world";
+  let array = ["ueser1,ueser1,"]
+  return (
+    <div>
+      <Navbar/>
+        {x}
+        {Array.map((user)=>{return <h2>{user}</h2>})}
+    </div>
+  )
+}
+
+export default App
