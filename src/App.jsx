@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Navbar } from './components/navbar'
+import { FirstComponent } from './components/FirstComponent';
 
 const App = () => {
-  let x = 0;
+  
+  const[x,setx] = useState(0);
+
   const btnclick=()=>{
     console.log("clicked");
-    x++;
+    setx(x+1);
   }
 
   return (
@@ -13,6 +16,7 @@ const App = () => {
       <Navbar/>
         {x}
         <button onClick={()=>{btnclick()}}>Click me</button>
+        <FirstComponent data={x} fn={setx}/>
     </div>
   )
 }
