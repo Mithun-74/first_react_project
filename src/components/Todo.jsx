@@ -5,17 +5,24 @@ import { Todoitem } from './Todoitem';
 let count = 0;
 export const Todo = () => {
    
-   const[todos,setTodos] = useState([]);
+   const[todos,setTodos] = useState(() => JSON.parse(localStorage.getItem("todos") || "[]"));
    const inputRef = useRef(null);
 
    const add=()=>{
-          setTodos([...todos,{no:count++,text:inputRef.current.value,display:""}]);
+          setTodos([...todos, {no:count++,text:inputRef.current.value,display:""}]);
           inputRef.current.value = "";
+          localStorage.setItem("todos_count",count);
    }
 
-   useEffect(()=>{
-       console.log(todos);
-   },[todos])
+ useEffect(()=>{
+  const savedCount = localStorage.getItem("todos_count");
+  if (savedCount) count = parseInt(savedCount);
+},[])
+
+   useEffect(() => {
+        console.log(todos);
+        localStorage.setItem("todos", JSON.stringify(todos));
+    }, [todos]);
 
   return (
     <div className='todo'>
@@ -26,7 +33,7 @@ export const Todo = () => {
         </div>
         <div className="todo-list">
             {todos.map((item,index)=>{
-              return <Todoitem key={index} no={item.no} display={item.display} text={item.text} />
+              return <Todoitem key={index} setTodos={setTodos} no={item.no} display={item.display} text={item.text} />
             })}
         </div>
     </div>
